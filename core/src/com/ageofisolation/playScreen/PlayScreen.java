@@ -16,7 +16,7 @@ public class PlayScreen extends AbstractScreen {
     public PlayScreen(int seed) {
         seededRNG = new Random(seed);
         playScreenState = new BattleState(this, seededRNG);
-        backgroundPath = "backgroundPlaceholder.png";
+        backgroundPath = "Graphics/Backgrounds/backgroundPlaceholder.png";
     }
 
     @Override
