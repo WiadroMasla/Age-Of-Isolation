@@ -63,7 +63,7 @@ public class StatusEffectBase implements NextStatusEffect {
 
     @Override
     public void startTurn() {
-
+        entityModel.startTurn();
     }
 
     @Override

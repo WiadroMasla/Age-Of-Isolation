@@ -5,4 +5,5 @@ public interface EntityModel {
     void takeDamage(int amount);
     void gainBlock(int amount);
     void heal(int amount);
+    void startTurn();
 }
