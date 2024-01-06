@@ -3,6 +3,7 @@ package com.ageofisolation.playScreen.Entity.Player.CardZones;
 
 import com.ageofisolation.playScreen.Entity.Player.CardZones.Card.Card;
 import com.ageofisolation.playScreen.Entity.Targetable;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 
 import java.util.LinkedList;
@@ -28,8 +29,8 @@ public class Hand {
                 cardRectangle.render();
             }
             if (selectedCard != null) {
-                //TODO: finish rectangle
-                cardRectangle.render(new Rectangle());
+                cardRectangle.render(new Rectangle(Gdx.input.getX() - STATIC_RECTANGLE.getX()/2,
+                        Gdx.input.getY() - STATIC_RECTANGLE.getY()/2, STATIC_RECTANGLE.getWidth(), STATIC_RECTANGLE.getHeight()));
             }
         }
     }
@@ -37,5 +38,30 @@ public class Hand {
     public void playCard(Targetable targetable) {
         selectedCard.card().playCard(targetable);
         cardRectangles.remove(selectedCard);
+        selectedCard = null;
+    }
+
+    public void update(float delta) {
+        if (!Gdx.input.isTouched() && selectedCard != null) {
+
+            Targetable target = null;
+            //TODO: look for targeted monster
+            if (target != null || !selectedCard.card().isTargeted()) {
+                playCard(target);
+            }
+
+            selectedCard = null;
+        }
+        if (Gdx.input.justTouched()) {
+            for (CardRectangle cardRectangle : cardRectangles) {
+                if (cardRectangle.rectangle().contains(Gdx.input.getX(), Gdx.input.getY())) {
+                    selectedCard = cardRectangle;
+                    if (!selectedCard.card().isTargeted()) {
+                        playCard(null);
+                    }
+                    break;
+                }
+            }
+        }
     }
 }

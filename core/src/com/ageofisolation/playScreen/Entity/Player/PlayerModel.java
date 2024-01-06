@@ -5,11 +5,13 @@ import com.ageofisolation.playScreen.Entity.Targetable;
 
 public class PlayerModel implements EntityModel {
     private int block;
-
+    /*
     public PlayerModel(PlayerObserver playerObserver) {
         block = 0;
         //TODO:
     }
+
+     */
 
     @Override
     public void dealDamage(int amount, Targetable target) {
