@@ -1,26 +1,30 @@
 package com.ageofisolation.playScreen.Entity.Player;
 
 import com.ageofisolation.playScreen.Entity.EntityModel;
+import com.ageofisolation.playScreen.Entity.Player.CardZones.CardZoneManager;
 import com.ageofisolation.playScreen.Entity.Targetable;
 
 public class PlayerModel implements EntityModel {
     private int block;
-    /*
-    public PlayerModel(PlayerObserver playerObserver) {
+    private PlayerObserver playerObserver;
+    private CardZoneManager cardZoneManager;
+
+    public PlayerModel(PlayerObserver playerObserver, CardZoneManager cardZoneManager) {
         block = 0;
-        //TODO:
+        this.playerObserver = playerObserver;
+        this.cardZoneManager = cardZoneManager;
     }
 
-     */
+
 
     @Override
     public void dealDamage(int amount, Targetable target) {
-
+        target.takeDamage(amount);
     }
 
     @Override
     public void takeDamage(int amount) {
-        //TODO:
+        playerObserver.notify(cardZoneManager.mill(amount));
     }
 
     @Override
@@ -30,12 +34,12 @@ public class PlayerModel implements EntityModel {
 
     @Override
     public void heal(int amount) {
-        //TODO:
+        cardZoneManager.heal(amount);
     }
 
     @Override
     public void startTurn() {
         block = 0;
-        //TODO:
+        cardZoneManager.startTurn();
     }
 }

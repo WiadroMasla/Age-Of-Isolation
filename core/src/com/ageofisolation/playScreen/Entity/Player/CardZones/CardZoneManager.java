@@ -59,4 +59,15 @@ public class CardZoneManager {
     public void update(float delta) {
         hand.update(delta);
     }
+
+    public boolean mill(int amount) {
+        if (graveyardSize() >= deckSize()) {
+            return true;
+        }
+        while (amount > 0) {
+            graveyard.addCard(deck.getCard());
+            --amount;
+        }
+        return false;
+    }
 }
