@@ -64,4 +64,16 @@ public class Hand {
             }
         }
     }
+
+    public List<Card> returnHand() {
+        List<Card> out = new LinkedList<>();
+        while (cardRectangles.size() > 0) {
+            out.add(cardRectangles.remove(cardRectangles.size()).card());
+        }
+        return out;
+    }
+
+    public int size() {
+        return cardRectangles.size();
+    }
 }
