@@ -7,7 +7,7 @@ public class CardZoneManager {
     private Hand hand;
     private Deck deck;
     private Graveyard graveyard;
-    private CardZoneManager(){
+    public CardZoneManager(){
         hand = new Hand();
         deck = new Deck();
         graveyard = new Graveyard();
