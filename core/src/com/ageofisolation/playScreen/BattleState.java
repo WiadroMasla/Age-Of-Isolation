@@ -1,6 +1,7 @@
 package com.ageofisolation.playScreen;
 
 import com.ageofisolation.graphics.GraphicsSingleton;
+import com.ageofisolation.playScreen.Entity.Player.PlayerFacade;
 
 import java.util.Random;
 
@@ -11,9 +12,7 @@ public class BattleState extends PlayScreenState {
 
     @Override
     public void render() {
-        GraphicsSingleton.getInstance().getSpriteBatch().draw(
-                GraphicsSingleton.getInstance().getTexture("badlogic.jpg"), 0.f, 0.f
-        );
+        PlayerFacade.getInstance().render();
     }
 
     @Override

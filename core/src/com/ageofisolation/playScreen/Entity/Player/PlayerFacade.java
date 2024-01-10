@@ -26,7 +26,7 @@ public class PlayerFacade extends EntityFacade {
 
     @Override
     protected StatusEffectRenderer getStatusEffectRenderer() {
-        return null; //TODO:
+        return new PlayerStatusEffectRenderer();
     }
 
     @Override
