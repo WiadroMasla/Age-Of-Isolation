@@ -43,6 +43,9 @@ public class PlayerFacade extends EntityFacade {
     public void payMana(int amount) {
         mana-=amount;
     }
+    public int getMana() {
+        return mana;
+    }
 
     public void reset(PlayScreen ps) {
         cardZoneManager = new CardZoneManager();
