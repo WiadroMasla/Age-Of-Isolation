@@ -5,8 +5,8 @@ import com.ageofisolation.playScreen.AbstractStatusEffectRenderer;
 import com.ageofisolation.playScreen.Entity.StatusEffectRenderInfo;
 import com.ageofisolation.playScreen.Entity.StatusEffectRenderer;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.Rectangle;
 
-import java.awt.*;
 
 public class PlayerStatusEffectRenderer extends AbstractStatusEffectRenderer {
     public final static int WIDTH = 20;

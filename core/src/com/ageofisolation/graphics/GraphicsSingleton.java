@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GraphicsSingleton {
     private static GraphicsSingleton instance = null;
-    //TODO
     private SpriteBatch spriteBatch;
     private TextureMap textureMap;
     private OrthographicCamera camera;
