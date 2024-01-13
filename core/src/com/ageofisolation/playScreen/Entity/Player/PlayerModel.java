@@ -24,7 +24,14 @@ public class PlayerModel implements EntityModel {
 
     @Override
     public void takeDamage(int amount) {
-        playerObserver.notify(cardZoneManager.mill(amount));
+        if (amount > block) {
+            amount-= block;
+            block = 0;
+            playerObserver.notify(cardZoneManager.mill(amount));
+        } else {
+            block-= amount;
+        }
+
     }
 
     @Override
