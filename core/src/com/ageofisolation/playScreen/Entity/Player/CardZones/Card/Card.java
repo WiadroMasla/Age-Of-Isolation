@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Card {
-    private final String cardboxTexturePath = "TODO: TBA";
+    private final String cardboxTexturePath = "Graphics/Card/CardBox.png";
     private String cardName;
     private String texturePath;
     private CardEffect cardEffect;

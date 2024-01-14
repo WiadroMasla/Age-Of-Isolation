@@ -4,4 +4,8 @@ public class MonsterFacade {
     public MonsterFacade(Monsters monsters) {
 
     }
+
+    public void endTurn() {
+
+    }
 }
