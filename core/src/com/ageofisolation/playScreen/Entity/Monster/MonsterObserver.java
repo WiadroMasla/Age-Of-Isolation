@@ -20,7 +20,8 @@ public class MonsterObserver {
         monsters.update(monsterFacade);
     }
 
-    public void setMonsters(Monsters monsters) {
+    public MonsterObserver setMonsters(Monsters monsters) {
         this.monsters = monsters;
+        return this;
     }
 }

@@ -34,7 +34,7 @@ public class Monsters {
     }
 
     public MonsterFacade getMonster(float x, float y) {
-        if (y < START_Y && y > START_Y + HEIGHT && x < START_X && x >= START_X + monsters.size() * WIDTH) {
+        if (y < START_Y || y > START_Y + HEIGHT || x < START_X || x >= START_X + monsters.size() * WIDTH) {
             return null;
         }
         return monsters.get((int) (x - START_X));

@@ -14,7 +14,7 @@ public class PlayerStatusEffectRenderer extends AbstractStatusEffectRenderer {
     @Override
     protected Rectangle getRenderRectangle() {
         OrthographicCamera camera = GraphicsSingleton.getInstance().getCamera();
-        Rectangle out = new Rectangle(WIDTH * statusEffectCounter, Math.round(camera.viewportHeight) - HEIGHT, WIDTH, HEIGHT);
+        Rectangle out = new Rectangle(WIDTH * statusEffectCounter, camera.viewportHeight - HEIGHT, WIDTH, HEIGHT);
         ++statusEffectCounter;
         return out; //TODO: implement going to the next row
     }
