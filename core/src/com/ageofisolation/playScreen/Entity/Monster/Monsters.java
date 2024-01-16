@@ -2,6 +2,9 @@ package com.ageofisolation.playScreen.Entity.Monster;
 
 
 
+
+import com.badlogic.gdx.math.Rectangle;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -37,6 +40,13 @@ public class Monsters {
         if (y < START_Y || y > START_Y + HEIGHT || x < START_X || x >= START_X + monsters.size() * WIDTH) {
             return null;
         }
-        return monsters.get((int) (x - START_X));
+        return monsters.get((int) ((x - START_X) / WIDTH));
+    }
+
+    public void render() {
+        for (int i = 0; i < monsters.size(); ++i) {
+            MonsterFacade monsterFacade = monsters.get(i);
+            monsterFacade.render(new Rectangle(START_X + i * WIDTH, START_Y, WIDTH, HEIGHT));
+        }
     }
 }

@@ -12,4 +12,7 @@ public abstract class PlayScreenState {
 
     public abstract void render();
     public abstract void update(float delta);
+    public void init(){
+
+    }
 }

@@ -19,4 +19,9 @@ public class BattleState extends PlayScreenState {
     public void update(float delta) {
 
     }
+
+    @Override
+    public void init() {
+        PlayerFacade.getInstance().startTurn();
+    }
 }

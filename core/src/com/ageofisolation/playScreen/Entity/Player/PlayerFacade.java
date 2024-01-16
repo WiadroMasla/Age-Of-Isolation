@@ -37,7 +37,14 @@ public class PlayerFacade extends EntityFacade {
     @Override
     public void startTurn() {
         mana = MAX_MANA;
+        cardZoneManager.startTurn();
         super.startTurn();
+    }
+
+    @Override
+    public void endTurn() {
+        cardZoneManager.endTurn();
+        super.endTurn();
     }
 
     public void payMana(int amount) {

@@ -8,14 +8,15 @@ import com.ageofisolation.playScreen.Entity.StatusEffect.StatusEffectHead;
 import com.ageofisolation.playScreen.Entity.StatusEffectRenderer;
 import com.ageofisolation.playScreen.Entity.Targetable;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 
-import java.awt.*;
 
 public class MonsterFacade extends EntityFacade {
     private ActionIterator actionIterator;
     private MonsterModel model;
     private String texturePath;
     private Rectangle rectangle = null;
+
     public MonsterFacade(Monsters monsters, int maxHealth, String texturePath, ActionIterator actionIterator) {
 
         super(null);
@@ -46,8 +47,8 @@ public class MonsterFacade extends EntityFacade {
     @Override
     protected void specificRender() {
         SpriteBatch spriteBatch = GraphicsSingleton.getInstance().getSpriteBatch();
-        spriteBatch.draw(GraphicsSingleton.getInstance().getTexture(texturePath), (float) rectangle.getX(), (float) rectangle.getY(),
-                (float) rectangle.getWidth(), (float) rectangle.getHeight());
+        spriteBatch.draw(GraphicsSingleton.getInstance().getTexture(texturePath), rectangle.getX(), rectangle.getY(),
+                rectangle.getWidth(), rectangle.getHeight());
         //TODO: HP
     }
 }

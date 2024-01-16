@@ -42,5 +42,6 @@ public class PlayScreen extends AbstractScreen {
 
     public void setState(PlayScreenState playScreenState) {
         this.playScreenState = playScreenState;
+        playScreenState.init();
     }
 }
