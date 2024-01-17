@@ -31,7 +31,6 @@ public class MonsterFacade extends EntityFacade {
     public void startTurn() {
         statusEffectHead.startTurn();
         actionIterator.next().takeAction(this);
-        statusEffectHead.endTurn();
     }
 
     public void render(Rectangle rectangle) {

@@ -24,6 +24,7 @@ public class Monsters {
 
     public void endTurn() {
         for (MonsterFacade monsterFacade : monsters) {
+            monsterFacade.startTurn();
             monsterFacade.endTurn();
         }
     }

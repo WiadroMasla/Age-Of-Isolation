@@ -1,6 +1,7 @@
 package com.ageofisolation.playScreen.Entity.Player.CardZones;
 
 
+import com.ageofisolation.playScreen.Entity.Monster.MonstersWrapper;
 import com.ageofisolation.playScreen.Entity.Player.CardZones.Card.Card;
 import com.ageofisolation.playScreen.Entity.Targetable;
 import com.badlogic.gdx.Gdx;
@@ -44,8 +45,7 @@ public class Hand {
     public void update(float delta) {
         if (!Gdx.input.isTouched() && selectedCard != null) {
 
-            Targetable target = null;
-            //TODO: look for targeted monster
+            Targetable target = MonstersWrapper.getInstance().getMonsters().getMonster(Gdx.input.getX(), Gdx.input.getY());
             if (target != null || !selectedCard.card().isTargeted()) {
                 playCard(target);
             }
