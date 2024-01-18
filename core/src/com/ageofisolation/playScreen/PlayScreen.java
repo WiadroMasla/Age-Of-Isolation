@@ -2,6 +2,7 @@ package com.ageofisolation.playScreen;
 
 import com.ageofisolation.AbstractScreen;
 import com.ageofisolation.graphics.GraphicsSingleton;
+import com.ageofisolation.playScreen.Entity.Monster.ConcreteMonsters.MonsterBiter;
 import com.ageofisolation.playScreen.Entity.Monster.Monsters;
 import com.ageofisolation.playScreen.Entity.Player.PlayerFacade;
 import com.badlogic.gdx.Gdx;
@@ -18,7 +19,10 @@ public class PlayScreen extends AbstractScreen {
     public PlayScreen(int seed) {
         seededRNG = new Random(seed);
         PlayerFacade.getInstance().reset(this);
-        playScreenState = new BattleState(this, seededRNG, new Monsters());
+        Monsters monsters = new Monsters();
+        monsters.addMonster(new MonsterBiter(monsters));
+        monsters.addMonster(new MonsterBiter(monsters));
+        playScreenState = new BattleState(this, seededRNG, monsters);
         backgroundPath = "Graphics/Backgrounds/backgroundPlaceholder.png";
     }
 
