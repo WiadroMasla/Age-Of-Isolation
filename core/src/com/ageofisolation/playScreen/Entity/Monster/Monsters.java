@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Monsters {
     public static final float START_X = 100f;
-    public static final float START_Y = 100f;
+    public static final float START_Y = 250f;
     public static final float WIDTH = 100f;
     public static final float HEIGHT = 150f;
     private List<MonsterFacade> monsters;

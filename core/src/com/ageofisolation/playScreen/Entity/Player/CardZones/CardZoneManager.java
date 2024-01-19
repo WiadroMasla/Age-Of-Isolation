@@ -13,6 +13,7 @@ public class CardZoneManager {
         graveyard = new Graveyard();
     }
     public void startTurn() {
+        System.out.println("START TURN");
         drawCards(DRAW_TO);
     }
 
@@ -25,6 +26,7 @@ public class CardZoneManager {
     }
 
     public void drawCards(int amount) {
+        System.out.println("DRAWING: " + amount);
         while (deck.size() > 0 && hand.size() < HAND_SIZE && amount > 0) {
             hand.addCard(deck.getCard());
             --amount;

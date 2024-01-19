@@ -15,7 +15,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Hand {
-    public static final Rectangle STATIC_RECTANGLE = new Rectangle(0,-10f, 50f,100f);
+    public static final Rectangle STATIC_RECTANGLE = new Rectangle(300f,0f, 100f,200f);
     private List<CardRectangle> cardRectangles;
     private CardRectangle selectedCard;
     public Hand() {
@@ -38,15 +38,16 @@ public class Hand {
 
         }
         if (selectedCard != null) {
-            selectedCard.render(new Rectangle(vector.x - STATIC_RECTANGLE.getX()/2,
-                    vector.y - STATIC_RECTANGLE.getY()/2, STATIC_RECTANGLE.getWidth(), STATIC_RECTANGLE.getHeight()));
+            selectedCard.render(new Rectangle(vector.x - STATIC_RECTANGLE.getWidth()/2,
+                    vector.y - STATIC_RECTANGLE.getHeight()/2, STATIC_RECTANGLE.getWidth(), STATIC_RECTANGLE.getHeight()));
         }
     }
 
     public void playCard(Targetable targetable) {
-        selectedCard.card().playCard(targetable);
-        cardRectangles.remove(selectedCard);
-        selectedCard = null;
+        if (selectedCard.card().playCard(targetable)) {
+            removeSelected();
+        }
+
     }
 
     public void update(float delta) {
@@ -62,12 +63,9 @@ public class Hand {
             selectedCard = null;
         }
         if (Gdx.input.justTouched()) {
-            System.out.println("TOUCHED");
-
             for (CardRectangle cardRectangle : cardRectangles) {
                 if (cardRectangle.rectangle().contains(vector.x, vector.y)) {
                     selectedCard = cardRectangle;
-                    System.out.println("SELECTED");
                     if (!selectedCard.card().isTargeted()) {
                         playCard(null);
                     }
@@ -87,5 +85,10 @@ public class Hand {
 
     public int size() {
         return cardRectangles.size();
+    }
+
+    private void removeSelected() {
+        cardRectangles.remove(selectedCard);
+        selectedCard = null; //TODO: move cards
     }
 }
