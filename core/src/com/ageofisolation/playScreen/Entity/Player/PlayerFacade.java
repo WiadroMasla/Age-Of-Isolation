@@ -59,4 +59,8 @@ public class PlayerFacade extends EntityFacade {
         statusEffectHead = new StatusEffectHead(new PlayerModel(new PlayerObserver(ps), cardZoneManager));
         mana = MAX_MANA;
     }
+
+    public void update(float delta) {
+        cardZoneManager.update(delta);
+    }
 }

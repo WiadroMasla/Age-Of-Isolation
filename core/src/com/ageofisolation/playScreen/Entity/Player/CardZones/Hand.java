@@ -1,17 +1,21 @@
 package com.ageofisolation.playScreen.Entity.Player.CardZones;
 
 
+import com.ageofisolation.graphics.GraphicsSingleton;
 import com.ageofisolation.playScreen.Entity.Monster.MonstersWrapper;
 import com.ageofisolation.playScreen.Entity.Player.CardZones.Card.Card;
 import com.ageofisolation.playScreen.Entity.Targetable;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class Hand {
-    public static final Rectangle STATIC_RECTANGLE = new Rectangle(0,-10f, 20f,40f);
+    public static final Rectangle STATIC_RECTANGLE = new Rectangle(0,-10f, 50f,100f);
     private List<CardRectangle> cardRectangles;
     private CardRectangle selectedCard;
     public Hand() {
@@ -25,14 +29,17 @@ public class Hand {
     }
 
     public void render() {
+        Camera camera = GraphicsSingleton.getInstance().getCamera();
+        Vector3 vector = camera.unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0));
         for (CardRectangle cardRectangle : cardRectangles) {
             if (cardRectangle != selectedCard) {
                 cardRectangle.render();
             }
-            if (selectedCard != null) {
-                cardRectangle.render(new Rectangle(Gdx.input.getX() - STATIC_RECTANGLE.getX()/2,
-                        Gdx.input.getY() - STATIC_RECTANGLE.getY()/2, STATIC_RECTANGLE.getWidth(), STATIC_RECTANGLE.getHeight()));
-            }
+
+        }
+        if (selectedCard != null) {
+            selectedCard.render(new Rectangle(vector.x - STATIC_RECTANGLE.getX()/2,
+                    vector.y - STATIC_RECTANGLE.getY()/2, STATIC_RECTANGLE.getWidth(), STATIC_RECTANGLE.getHeight()));
         }
     }
 
@@ -43,9 +50,11 @@ public class Hand {
     }
 
     public void update(float delta) {
+        Camera camera = GraphicsSingleton.getInstance().getCamera();
+        Vector3 vector = camera.unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0));
         if (!Gdx.input.isTouched() && selectedCard != null) {
 
-            Targetable target = MonstersWrapper.getInstance().getMonsters().getMonster(Gdx.input.getX(), Gdx.input.getY());
+            Targetable target = MonstersWrapper.getInstance().getMonsters().getMonster(vector.x, vector.y);
             if (target != null || !selectedCard.card().isTargeted()) {
                 playCard(target);
             }
@@ -53,9 +62,12 @@ public class Hand {
             selectedCard = null;
         }
         if (Gdx.input.justTouched()) {
+            System.out.println("TOUCHED");
+
             for (CardRectangle cardRectangle : cardRectangles) {
-                if (cardRectangle.rectangle().contains(Gdx.input.getX(), Gdx.input.getY())) {
+                if (cardRectangle.rectangle().contains(vector.x, vector.y)) {
                     selectedCard = cardRectangle;
+                    System.out.println("SELECTED");
                     if (!selectedCard.card().isTargeted()) {
                         playCard(null);
                     }

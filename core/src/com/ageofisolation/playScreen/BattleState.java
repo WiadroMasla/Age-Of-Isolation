@@ -11,15 +11,17 @@ import static java.lang.System.exit;
 
 public class BattleState extends PlayScreenState {
     private Monsters monsters;
+    private PlayerFacade playerFacade;
     public BattleState(PlayScreen playScreen, Random seededRNG, Monsters monsters) {
         super(playScreen, seededRNG);
         this.monsters = monsters;
+        playerFacade = PlayerFacade.getInstance();
     }
 
     @Override
     public void render() {
-        PlayerFacade.getInstance().render();
         monsters.render();
+        playerFacade.render();
     }
 
     @Override
@@ -27,6 +29,7 @@ public class BattleState extends PlayScreenState {
         if (monsters.isDefeated()) {
             exit(0);
         }
+        playerFacade.update(delta);
     }
 
     @Override

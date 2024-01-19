@@ -1,6 +1,7 @@
 package com.ageofisolation.playScreen.Entity.Player.CardZones;
 
 import com.ageofisolation.playScreen.Entity.Player.CardZones.Card.Card;
+import com.ageofisolation.playScreen.Entity.Player.CardZones.Card.Cards.CardPunch;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -11,7 +12,7 @@ public class Deck {
     private List<Card> cards;
     public Deck() {
         cards = new LinkedList<>();
-        //TODO: make actual deck
+        addCards(CardPunch.getInstance(), 20);
     }
 
     public void shuffle() {
@@ -20,6 +21,14 @@ public class Deck {
 
     public void addCard(Card card) {
         cards.add(card);
+        shuffle();
+    }
+
+    public void addCards(Card card, int amount) {
+        while (amount > 0) {
+            cards.add(card);
+            --amount;
+        }
         shuffle();
     }
 

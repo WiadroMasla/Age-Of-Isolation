@@ -22,7 +22,7 @@ public class PlayScreen extends AbstractScreen {
         Monsters monsters = new Monsters();
         monsters.addMonster(new MonsterBiter(monsters));
         monsters.addMonster(new MonsterBiter(monsters));
-        playScreenState = new BattleState(this, seededRNG, monsters);
+        setState(new BattleState(this, seededRNG, monsters));
         backgroundPath = "Graphics/Backgrounds/backgroundPlaceholder.png";
     }
 
