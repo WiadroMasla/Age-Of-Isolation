@@ -1,8 +1,17 @@
 package com.ageofisolation.playScreen.Entity.Player.CardZones;
 
+
+import com.ageofisolation.graphics.GraphicsSingleton;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
+
 public class CardZoneManager {
     public static final int DRAW_TO = 5;
     public static final int HAND_SIZE = 7;
+    public static final Rectangle GRAVEYARD_RECTANGLE = new Rectangle(50f, 0f, 100f, 200f);
+    public static final Rectangle DECK_RECTANGLE = new Rectangle(175f, 0f, 100f, 200f);
+    public static final String DECK_PATH = "Graphics/HUD/Deck.png";
+    public static final String GRAVEYARD_PATH = "Graphics/HUD/Graveyard.png";
 
     private Hand hand;
     private Deck deck;
@@ -54,8 +63,13 @@ public class CardZoneManager {
     }
 
     public void render() {
+        SpriteBatch spriteBatch = GraphicsSingleton.getInstance().getSpriteBatch();
+        spriteBatch.draw(GraphicsSingleton.getInstance().getTexture(DECK_PATH), DECK_RECTANGLE.getX(), DECK_RECTANGLE.getY(),
+                DECK_RECTANGLE.getWidth(), DECK_RECTANGLE.getHeight());
+        spriteBatch.draw(GraphicsSingleton.getInstance().getTexture(GRAVEYARD_PATH), GRAVEYARD_RECTANGLE.getX(), GRAVEYARD_RECTANGLE.getY(),
+                GRAVEYARD_RECTANGLE.getWidth(), GRAVEYARD_RECTANGLE.getHeight());
+        //TODO: numbers
         hand.render();
-        //TODO: render deck and GY
     }
 
     public void update(float delta) {
