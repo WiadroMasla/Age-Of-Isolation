@@ -78,7 +78,7 @@ public class Hand {
     public List<Card> returnHand() {
         List<Card> out = new LinkedList<>();
         while (cardRectangles.size() > 0) {
-            out.add(cardRectangles.remove(cardRectangles.size()).card());
+            out.add(cardRectangles.remove(cardRectangles.size() - 1).card());
         }
         return out;
     }
