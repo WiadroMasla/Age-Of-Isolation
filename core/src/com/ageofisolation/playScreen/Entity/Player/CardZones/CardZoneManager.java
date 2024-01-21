@@ -10,8 +10,11 @@ public class CardZoneManager {
     public static final int HAND_SIZE = 7;
     public static final Rectangle GRAVEYARD_RECTANGLE = new Rectangle(50f, 0f, 100f, 200f);
     public static final Rectangle DECK_RECTANGLE = new Rectangle(175f, 0f, 100f, 200f);
+    public static final Rectangle MANA_RECTANGLE = new Rectangle(50f, 250f, 100f, 100f);
+
     public static final String DECK_PATH = "Graphics/HUD/Deck.png";
     public static final String GRAVEYARD_PATH = "Graphics/HUD/Graveyard.png";
+    public static final String MANA_PATH = "Graphics/HUD/Mana.png";
 
     private Hand hand;
     private Deck deck;
@@ -68,6 +71,8 @@ public class CardZoneManager {
                 DECK_RECTANGLE.getWidth(), DECK_RECTANGLE.getHeight());
         spriteBatch.draw(GraphicsSingleton.getInstance().getTexture(GRAVEYARD_PATH), GRAVEYARD_RECTANGLE.getX(), GRAVEYARD_RECTANGLE.getY(),
                 GRAVEYARD_RECTANGLE.getWidth(), GRAVEYARD_RECTANGLE.getHeight());
+        spriteBatch.draw(GraphicsSingleton.getInstance().getTexture(MANA_PATH), MANA_RECTANGLE.getX(), MANA_RECTANGLE.getY(),
+                MANA_RECTANGLE.getWidth(), MANA_RECTANGLE.getHeight());
         //TODO: numbers
         hand.render();
     }
