@@ -9,10 +9,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Monsters {
-    public static final float START_X = 100f;
-    public static final float START_Y = 250f;
-    public static final float WIDTH = 100f;
-    public static final float HEIGHT = 150f;
+    public static final float START_X = 400f;
+    public static final float START_Y = 300f;
+    public static final float WIDTH = 200f;
+    public static final float HEIGHT = 300f;
     private List<MonsterFacade> monsters;
     public Monsters() {
         monsters = new LinkedList<>();
