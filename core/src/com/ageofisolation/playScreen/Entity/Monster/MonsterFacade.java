@@ -12,6 +12,10 @@ import com.badlogic.gdx.math.Rectangle;
 
 
 public class MonsterFacade extends EntityFacade {
+    public static final String HP_PATH = "Graphics/HUD/Health.png";
+    public static final float HP_WIDTH = 100f;
+    public static final float HP_HEIGHT = 100f;
+    public static final String HP_FONT = "Fonts/18_black.fnt";
     private ActionIterator actionIterator;
     private MonsterModel model;
     private String texturePath;
@@ -48,6 +52,9 @@ public class MonsterFacade extends EntityFacade {
         SpriteBatch spriteBatch = GraphicsSingleton.getInstance().getSpriteBatch();
         spriteBatch.draw(GraphicsSingleton.getInstance().getTexture(texturePath), rectangle.getX(), rectangle.getY(),
                 rectangle.getWidth(), rectangle.getHeight());
-        //TODO: HP
+        spriteBatch.draw(GraphicsSingleton.getInstance().getTexture(HP_PATH), rectangle.getX(), rectangle.getY() + rectangle.getHeight(),
+                HP_WIDTH, HP_HEIGHT);
+        GraphicsSingleton.getInstance().getFont(HP_FONT).draw(spriteBatch, String.valueOf(model.getHealth()),
+                rectangle.getX() + HP_WIDTH / 2, rectangle.getY() + rectangle.getHeight() + HP_HEIGHT / 2);
     }
 }

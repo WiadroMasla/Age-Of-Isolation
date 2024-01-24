@@ -44,6 +44,6 @@ public class Card {
         BitmapFont bitmapFont = GraphicsSingleton.getInstance().getFont(TITLE_FONT);
         bitmapFont.draw(spriteBatch, cardName, rectangle.getX() + rectangle.getWidth() * TITLE_X_COEFFICIENT,
                 rectangle.getY() + rectangle.getHeight() * HEADER_Y_COEFFICIENT);
-        //TODO: add text box and card art and MC
+        //TODO: add text box, card art and MC
     }
 }

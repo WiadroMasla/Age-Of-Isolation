@@ -48,4 +48,8 @@ public class MonsterModel implements EntityModel {
         block = 0;
     }
 
+    public int getHealth() {
+        return health;
+    }
+
 }

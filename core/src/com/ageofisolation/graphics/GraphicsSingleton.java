@@ -46,5 +46,6 @@ public class GraphicsSingleton {
     public void dispose() {
         spriteBatch.dispose();
         textureMap.dispose();
+        fontMap.dispose();
     }
 }
