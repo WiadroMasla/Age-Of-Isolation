@@ -49,4 +49,8 @@ public class PlayerModel implements EntityModel {
         block = 0;
         cardZoneManager.startTurn();
     }
+
+    public int getBlock() {
+        return block;
+    }
 }

@@ -13,10 +13,7 @@ import java.util.Random;
 import static java.lang.System.exit;
 
 public class BattleState extends PlayScreenState {
-    public static final Rectangle MANA_RECTANGLE = new Rectangle(50f, 250f, 100f, 100f);
-    public static final Vector2 MANA_LABEL_POS = new Vector2(100f, 300f);
-    public static final String MANA_PATH = "Graphics/HUD/Mana.png";
-    public static final String FONT_16 = "Fonts/16.fnt";
+
 
     private Monsters monsters;
     private PlayerFacade playerFacade;
@@ -31,10 +28,7 @@ public class BattleState extends PlayScreenState {
     @Override
     public void render() {
         SpriteBatch spriteBatch = GraphicsSingleton.getInstance().getSpriteBatch();
-        spriteBatch.draw(GraphicsSingleton.getInstance().getTexture(MANA_PATH), MANA_RECTANGLE.getX(), MANA_RECTANGLE.getY(),
-                MANA_RECTANGLE.getWidth(), MANA_RECTANGLE.getHeight());
-        GraphicsSingleton.getInstance().getFont(FONT_16).draw(spriteBatch, String.valueOf(PlayerFacade.getInstance().getMana()),
-                MANA_LABEL_POS.x, MANA_LABEL_POS.y);
+
         nextTurnButton.render();
         monsters.render();
         playerFacade.render();

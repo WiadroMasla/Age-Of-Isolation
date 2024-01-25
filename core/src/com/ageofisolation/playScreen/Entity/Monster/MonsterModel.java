@@ -51,5 +51,7 @@ public class MonsterModel implements EntityModel {
     public int getHealth() {
         return health;
     }
-
+    public int getBlock() {
+        return block;
+    }
 }
